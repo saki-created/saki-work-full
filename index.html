@@ -402,13 +402,14 @@ function renderTasks(){
 function addTask(){ state.tasks.push({t:"",g:""}); persist(); renderTasks(); }
 
 /* 30日 */
+var WEEK_RANGE=[[0,7],[7,14],[14,21],[21,30]]; /* 4週目はDay22〜30の9日 */
 function renderDays(){
   var wrap=document.getElementById("dayplan"); wrap.innerHTML="";
   WEEKS.forEach(function(wk,wi){
+    var start=WEEK_RANGE[wi][0], end=WEEK_RANGE[wi][1];
     var h=document.createElement("div"); h.className="wk"; h.innerHTML=wk.t+"<small>"+wk.s+"</small>"; wrap.appendChild(h);
     var grid=document.createElement("div"); grid.className="days";
-    for(var d=0; d<7 && (wi*7+d)<30; d++){
-      var di=wi*7+d;
+    for(var di=start; di<end; di++){
       var lab=document.createElement("label");
       var ck=document.createElement("input"); ck.type="checkbox"; ck.checked=getCheck("s8",di);
       (function(di){ ck.addEventListener("change",function(){ setCheck("s8",di,ck.checked); updateDayBar(); }); })(di);
@@ -417,7 +418,7 @@ function renderDays(){
     }
     wrap.appendChild(grid);
     var list=document.createElement("p"); list.className="daylist"; var txt="";
-    for(var d2=0; d2<7 && (wi*7+d2)<30; d2++){ var di2=wi*7+d2; txt+="Day"+(di2+1)+"　"+DAYS[di2]+"<br>"; }
+    for(var di2=start; di2<end; di2++){ txt+="Day"+(di2+1)+"　"+DAYS[di2]+"<br>"; }
     list.innerHTML=txt; wrap.appendChild(list);
   });
   updateDayBar();
