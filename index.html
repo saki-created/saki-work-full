@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1人サロン経営 整えノート｜判断基準ワーク 完全版｜サキ</title>
+<meta name="description" content="1人サロン経営OS 判断基準ワークの完全版。数字を入れるだけで自動計算、30日プランで、なんとなく経営を「基準で動く経営」に整えます。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="images/icon.png">
+<link rel="apple-touch-icon" href="images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --base:#FCF8F4;--beige:#EFE5DA;--pink:#C99A96;--pink-soft:#F3E3E0;
+  --accent:#A82C5E;--ink:#463B36;--ink-soft:#6E625C;--ok:#4E9E72;
+  --mincho:"Zen Old Mincho",serif;--gothic:"Zen Kaku Gothic New",sans-serif;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--base);color:var(--ink);font-family:var(--gothic);font-size:16px;line-height:1.9;letter-spacing:.03em;-webkit-text-size-adjust:100%;}
+.app{max-width:600px;margin:0 auto;padding:0 18px 90px;}
+
+header{position:sticky;top:0;z-index:20;background:rgba(252,248,244,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(201,154,150,.25);}
+.header-in{max-width:600px;margin:0 auto;padding:11px 18px;display:flex;align-items:center;gap:10px;}
+.header-in .avatar{width:34px;height:34px;border-radius:50%;overflow:hidden;background:var(--pink-soft);flex:0 0 34px;}
+.header-in .avatar img{width:100%;height:100%;object-fit:cover;}
+.header-in b{font-family:var(--mincho);font-size:14px;font-weight:500;line-height:1.3;}
+.header-in span{display:block;font-size:10px;color:var(--ink-soft);}
+.header-in .home-btn{margin-left:auto;background:none;border:1px solid var(--pink);color:var(--pink);font-size:11px;font-weight:700;padding:7px 13px;border-radius:999px;cursor:pointer;font-family:var(--gothic);}
+
+h1{font-family:var(--mincho);font-size:23px;line-height:1.6;font-weight:500;margin:0 0 14px;}
+h1 em{font-style:normal;color:var(--accent);}
+.sec-head{font-family:var(--mincho);font-size:20px;font-weight:500;margin:0 0 6px;line-height:1.5;}
+.sec-num{font-size:11px;letter-spacing:.2em;color:var(--pink);margin:0 0 4px;}
+.lead{font-size:14px;color:var(--ink-soft);line-height:2;margin:0 0 8px;}
+.qh{font-size:12.5px;color:var(--ink-soft);line-height:1.85;margin:2px 0 18px;}
+
+/* 全体進捗 */
+.overall{margin:24px 0 8px;}
+.overall .bar{height:8px;border-radius:999px;background:rgba(201,154,150,.28);overflow:hidden;}
+.overall .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .5s;border-radius:999px;}
+.overall .t{font-size:11px;color:var(--ink-soft);margin-top:7px;text-align:right;}
+
+/* カード */
+.card{background:#fff;border:1px solid rgba(201,154,150,.28);border-radius:18px;padding:26px 22px;box-shadow:0 4px 16px rgba(70,59,54,.05);margin-bottom:16px;}
+
+/* 目次メニュー */
+.menu{display:grid;gap:11px;margin-top:8px;}
+.menu button{display:flex;align-items:center;gap:14px;text-align:left;width:100%;background:#fff;border:1px solid rgba(201,154,150,.3);border-radius:14px;padding:16px 18px;cursor:pointer;font-family:var(--gothic);color:var(--ink);transition:.2s;}
+.menu button:hover{border-color:var(--accent);}
+.menu .no{font-family:var(--mincho);font-size:17px;color:var(--pink);flex:0 0 26px;}
+.menu .tx{flex:1;min-width:0;}
+.menu .tx b{display:block;font-size:14.5px;font-weight:500;line-height:1.4;}
+.menu .tx small{font-size:11px;color:var(--ink-soft);}
+.menu .st{flex:0 0 auto;font-size:11px;font-weight:700;color:var(--ink-soft);}
+.menu .st.done{color:var(--ok);}
+.menu .st .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:rgba(201,154,150,.4);margin-right:5px;vertical-align:middle;}
+.menu .st.done .dot{background:var(--ok);}
+
+/* 入力共通 */
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:13.5px;font-weight:500;margin-bottom:7px;}
+.im{position:relative;}
+.im input{width:100%;font-family:var(--gothic);font-size:18px;font-weight:500;color:var(--ink);padding:12px 42px 12px 14px;border:1.5px solid rgba(201,154,150,.5);border-radius:11px;background:var(--base);text-align:right;-moz-appearance:textfield;}
+.im input:focus{outline:none;border-color:var(--accent);}
+.im input::-webkit-outer-spin-button,.im input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.im .u{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-soft);}
+textarea.wf,input.wt{width:100%;font-family:var(--gothic);font-size:14px;color:var(--ink);padding:12px 14px;border:1.5px solid rgba(201,154,150,.5);border-radius:11px;background:var(--base);resize:vertical;line-height:1.8;}
+textarea.wf:focus,input.wt:focus{outline:none;border-color:var(--accent);}
+
+/* チェックリスト */
+.checks{display:grid;gap:9px;}
+.checks label{display:flex;align-items:flex-start;gap:11px;padding:13px 15px;border:1.5px solid rgba(201,154,150,.35);border-radius:11px;font-size:14px;cursor:pointer;background:var(--base);transition:.15s;line-height:1.6;}
+.checks label:has(input:checked){border-color:var(--accent);background:var(--pink-soft);}
+.checks input{width:19px;height:19px;flex:0 0 19px;margin-top:2px;accent-color:var(--accent);}
+
+/* メーター */
+.meter{background:var(--base);border:1px solid rgba(201,154,150,.3);border-radius:12px;padding:16px 18px;margin-top:16px;text-align:center;}
+.meter .mv{font-family:var(--mincho);font-size:22px;font-weight:500;color:var(--accent);}
+.meter .mt{font-size:12.5px;color:var(--ink-soft);line-height:1.8;margin-top:2px;}
+
+/* 自動計算の結果 */
+.autobox{background:var(--ink);border-radius:14px;padding:20px;margin-top:8px;color:#fff;}
+.autobox .row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.autobox .row:last-child{border-bottom:none;}
+.autobox .k{font-size:12.5px;opacity:.72;}
+.autobox .v{font-family:var(--mincho);font-size:20px;font-weight:500;}
+.autobox .v.big{color:#F3A5C0;font-size:23px;}
+.autobox .v.ok{color:#8FD6A8;}
+.hint{font-size:12px;color:var(--ink-soft);line-height:1.85;margin:12px 0 0;}
+
+/* 優先順位タスク */
+.task{display:flex;gap:8px;align-items:center;margin-bottom:9px;}
+.task input.wt{flex:1;}
+.task .tags{display:flex;gap:4px;flex:0 0 auto;}
+.task .tags button{width:34px;height:38px;border-radius:9px;border:1.5px solid rgba(201,154,150,.4);background:var(--base);font-family:var(--mincho);font-size:16px;cursor:pointer;color:var(--ink-soft);}
+.task .tags button.on{background:var(--accent);color:#fff;border-color:var(--accent);}
+.addbtn{width:100%;background:none;border:1.5px dashed var(--pink);color:var(--pink);border-radius:11px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--gothic);margin-top:4px;}
+
+/* 30日 */
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin-top:6px;}
+.days label{position:relative;aspect-ratio:1;border:1.5px solid rgba(201,154,150,.35);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;background:var(--base);color:var(--ink-soft);}
+.days label:has(input:checked){background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700;}
+.days input{position:absolute;opacity:0;pointer-events:none;}
+.wk{font-size:12px;font-weight:700;color:var(--accent);margin:16px 0 8px;letter-spacing:.05em;}
+.wk small{display:block;font-weight:400;color:var(--ink-soft);font-size:11px;}
+.daylist{font-size:12px;color:var(--ink-soft);line-height:1.9;margin:6px 0 0;}
+
+/* 設計図 */
+.map-metric{background:var(--base);border:1px solid rgba(201,154,150,.3);border-radius:13px;padding:15px 18px;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+.map-metric .k{font-size:12.5px;color:var(--ink-soft);}
+.map-metric .v{font-family:var(--mincho);font-size:22px;font-weight:500;}
+.map-metric .v small{font-size:12px;color:var(--ink-soft);margin-left:2px;}
+.map-metric.dark{background:var(--ink);border-color:var(--ink);}
+.map-metric.dark .k{color:rgba(255,255,255,.7);}
+.map-metric.dark .v{color:#fff;}
+.map-block{margin:18px 0;}
+.map-block .bt{font-size:12px;font-weight:700;color:var(--pink);letter-spacing:.1em;margin-bottom:8px;}
+.map-txt{background:var(--pink-soft);border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.9;white-space:pre-wrap;min-height:20px;}
+.map-empty{color:var(--ink-soft);font-size:12.5px;}
+
+/* ボタン */
+.btns{display:flex;gap:11px;margin-top:24px;}
+.btn{flex:1;text-align:center;font-family:var(--gothic);font-weight:700;font-size:15px;padding:15px;border-radius:999px;border:none;cursor:pointer;letter-spacing:.03em;}
+.btn-main{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(168,44,94,.2);}
+.btn-ghost{background:transparent;border:1.5px solid var(--pink);color:var(--pink);flex:0 0 auto;padding:15px 20px;}
+.reset{display:block;margin:10px auto 0;background:none;border:none;color:var(--ink-soft);font-size:12px;text-decoration:underline;cursor:pointer;}
+.note-cta{display:block;text-decoration:none;text-align:center;margin-top:8px;background:var(--accent);color:#fff;font-weight:700;font-size:15px;padding:16px;border-radius:999px;}
+.note-cta small{display:block;font-size:11px;font-weight:400;opacity:.9;margin-top:3px;}
+
+.view{display:none;}
+.view.on{display:block;animation:fade .4s both;}
+@keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.saved{text-align:center;font-size:11.5px;color:var(--ink-soft);margin:16px 0 0;line-height:1.8;}
+.foot{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:30px;line-height:1.9;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <div class="avatar"><img src="images/icon.png" alt="サキ"></div>
+    <div>
+      <b>経営 整えノート</b>
+      <span>1人サロン 判断基準ワーク・完全版</span>
+    </div>
+    <button class="home-btn" onclick="goHome()">目次</button>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- ホーム -->
+  <div class="view on" id="v_home">
+    <h1>なんとなく経営を、<br><em>「基準で動く経営」</em>へ。</h1>
+    <p class="lead">不安は、能力不足じゃありません。<br>「見えていないもの」から生まれます。<br>1つずつ、見える形に整えていきましょう。</p>
+
+    <div class="overall">
+      <div class="bar"><i id="ov_bar"></i></div>
+      <div class="t" id="ov_txt">進捗 0%</div>
+    </div>
+
+    <div class="menu" id="menu"></div>
+
+    <p class="saved">入力はすべて、この端末の中だけに自動保存されます。<br>いつ閉じても、続きから再開できます。</p>
+    <button class="reset" onclick="resetAll()">すべての入力を消す</button>
+    <p class="foot">&copy; 2026 サキ｜1人サロンの『うら側整え屋』</p>
+  </div>
+
+  <!-- 1 不安の正体チェック -->
+  <div class="view" id="v_1">
+    <div class="card">
+      <p class="sec-num">WORK 1</p>
+      <h2 class="sec-head">不安の正体チェック</h2>
+      <p class="qh">当てはまるものに、チェックしてください。数えるだけで、"見えていない"が見えてきます。</p>
+      <div class="checks" id="c_s1"></div>
+      <div class="meter"><div class="mv" id="m1_v">0 / 10</div><div class="mt" id="m1_t">チェックしてみましょう。</div></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('2')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 2 数字の見える化 -->
+  <div class="view" id="v_2">
+    <div class="card">
+      <p class="sec-num">WORK 2</p>
+      <h2 class="sec-head">数字で、見える化する</h2>
+      <p class="qh">知っている数字を入れるだけ。不足額・1日に必要な売上・あと何人かは、自動で計算します。</p>
+      <div class="field"><label>① 今月の必要売上（生活＋固定費）</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s2_need" placeholder="例：350000"><span class="u">円</span></div></div>
+      <div class="field"><label>② 現在の売上</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s2_cur" placeholder="例：250000"><span class="u">円</span></div></div>
+      <div class="field"><label>③ 今月の残り営業日数</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s2_days" placeholder="例：12"><span class="u">日</span></div></div>
+      <div class="field"><label>④ 平均の客単価</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s2_unit" placeholder="例：9000"><span class="u">円</span></div></div>
+      <div class="field"><label>⑤ 今月の空き枠数</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s2_slots" placeholder="例：20"><span class="u">枠</span></div></div>
+      <div class="autobox" id="s2_auto">
+        <div class="row"><span class="k">不足額</span><span class="v big" id="s2_gap">—</span></div>
+        <div class="row"><span class="k">1日あたり必要売上</span><span class="v" id="s2_perday">—</span></div>
+        <div class="row"><span class="k">あと必要な人数</span><span class="v" id="s2_people">—</span></div>
+        <div class="row"><span class="k">空き枠は足りている？</span><span class="v" id="s2_slotjudge">—</span></div>
+      </div>
+      <p class="hint" id="s2_hint">数字を入れると、ここに自動で出ます。</p>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('3')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 3 優先順位 -->
+  <div class="view" id="v_3">
+    <div class="card">
+      <p class="sec-num">WORK 3</p>
+      <h2 class="sec-head">優先順位の間違いを見つける</h2>
+      <p class="qh">今やっていることを書き出して、右のボタンで分類しましょう。<br>〇＝売上直結／△＝間接的／×＝安心のためだけ</p>
+      <div id="taskList"></div>
+      <button class="addbtn" onclick="addTask()">＋ 項目を追加する</button>
+      <div class="meter"><div class="mv" id="m3_v">〇0 △0 ×0</div><div class="mt" id="m3_t">×が多いほど、不安は消えにくくなります。</div></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('4')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 4 判断基準 -->
+  <div class="view" id="v_4">
+    <div class="card">
+      <p class="sec-num">WORK 4</p>
+      <h2 class="sec-head">判断基準を作る</h2>
+      <p class="qh">迷ったら、この3つで決めます。「YESが2つ以上ならGO」。<br>あなた自身の基準も、言葉にしておきましょう。</p>
+      <div class="checks" style="margin-bottom:18px;">
+        <label><input type="checkbox" data-g="s4rule" data-i="0"><span>1. 売上につながる？</span></label>
+        <label><input type="checkbox" data-g="s4rule" data-i="1"><span>2. 今やる必要がある？</span></label>
+        <label><input type="checkbox" data-g="s4rule" data-i="2"><span>3. 継続できる？</span></label>
+      </div>
+      <div class="field"><label>わたしの判断基準（迷ったときの、自分ルール）</label><textarea class="wf" id="s4_basis" rows="3" placeholder="例：迷ったら、まず既存のお客様のことを優先する"></textarea></div>
+      <p class="qh" style="margin-top:8px;">SNS投稿を作る前に確認：</p>
+      <div class="checks" id="c_s4act"></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('5')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 5 やらないこと -->
+  <div class="view" id="v_5">
+    <div class="card">
+      <p class="sec-num">WORK 5</p>
+      <h2 class="sec-head">やらないことを決める</h2>
+      <p class="qh">1人サロンは「削る力」が大事です。まず減らしたいものにチェック → 今月やめる3つを決めましょう。</p>
+      <div class="checks" id="c_s5"></div>
+      <div class="field" style="margin-top:18px;"><label>今月、やめること①</label><input class="wf wt" id="s5_stop1" placeholder="例：投稿デザインの作り込みすぎ"></div>
+      <div class="field"><label>今月、やめること②</label><input class="wf wt" id="s5_stop2" placeholder=""></div>
+      <div class="field"><label>今月、やめること③</label><input class="wf wt" id="s5_stop3" placeholder=""></div>
+      <div class="field"><label>それを続けると、何が苦しくなる？（やめない代償）</label><textarea class="wf" id="s5_cost" rows="2" placeholder="例：投稿作りに時間がかかり睡眠不足になる"></textarea></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('6')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 6 逆算 -->
+  <div class="view" id="v_6">
+    <div class="card">
+      <p class="sec-num">WORK 6</p>
+      <h2 class="sec-head">3ヶ月後から逆算する</h2>
+      <p class="qh">まず3ヶ月後の理想を決めて、そこから毎月・毎週・毎日にすることへ落とします。</p>
+      <div class="field"><label>3ヶ月後の月売上</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s6_sales" placeholder="例：500000"><span class="u">円</span></div></div>
+      <div class="field"><label>3ヶ月後の休日数（月）</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s6_holi" placeholder="例：8"><span class="u">日</span></div></div>
+      <div class="field"><label>理想の客数（月）</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s6_cust" placeholder="例：55"><span class="u">人</span></div></div>
+      <div class="field"><label>理想の客単価</label><div class="im"><input class="wf" type="number" inputmode="numeric" id="s6_unit" placeholder="例：10000"><span class="u">円</span></div></div>
+      <div class="field"><label>そのときの気持ちは？</label><input class="wf wt" id="s6_feel" placeholder="例：焦らず、笑顔でいられる"></div>
+      <div class="field"><label>▼ 毎月やること</label><textarea class="wf" id="s6_month" rows="2" placeholder="例：次回予約率UP／単価＋3,000円"></textarea></div>
+      <div class="field"><label>▼ 毎週やること</label><textarea class="wf" id="s6_week" rows="2" placeholder="例：予約表確認／既存LINEフォロー"></textarea></div>
+      <div class="field"><label>▼ 毎日やること</label><textarea class="wf" id="s6_day" rows="2" placeholder="例：次回予約確認／カルテ記入"></textarea></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('7')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 7 チェックリスト -->
+  <div class="view" id="v_7">
+    <div class="card">
+      <p class="sec-num">WORK 7</p>
+      <h2 class="sec-head">サロン経営チェックリスト</h2>
+      <p class="qh">今、できているものにチェック。3つ以上できていないなら、経営不安が出やすい状態です。</p>
+      <div class="checks" id="c_s7"></div>
+      <div class="meter"><div class="mv" id="m7_v">0 / 5</div><div class="mt" id="m7_t">できているものをチェックしましょう。</div></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('8')">次のワークへ</button></div>
+    </div>
+  </div>
+
+  <!-- 8 30日プラン -->
+  <div class="view" id="v_8">
+    <div class="card">
+      <p class="sec-num">WORK 8</p>
+      <h2 class="sec-head">30日 実践プラン</h2>
+      <p class="qh">読むだけでは変わりません。1日1つ、終えたらタップ。進み具合が、下のバーで見えます。</p>
+      <div class="overall"><div class="bar"><i id="d30_bar"></i></div><div class="t" id="d30_txt">0 / 30 日</div></div>
+      <div id="dayplan"></div>
+      <div class="btns"><button class="btn btn-ghost" onclick="goHome()">目次へ</button><button class="btn btn-main" onclick="go('9')">設計図を見る</button></div>
+    </div>
+  </div>
+
+  <!-- 9 設計図 -->
+  <div class="view" id="v_9">
+    <div class="card">
+      <p class="sec-num">YOUR MAP</p>
+      <h2 class="sec-head">わたしの、経営の設計図</h2>
+      <p class="qh">入れてきた数字と言葉が、1枚に集まりました。迷ったら、ここに戻ってきてください。</p>
+      <div id="map"></div>
+      <a class="note-cta" href="https://note.com/saki_created/n/n75d2107b5b33" target="_blank" rel="noopener" style="margin-top:20px;">記事に戻る<small>1人サロン経営OS スターターキット</small></a>
+      <button class="btn btn-ghost" style="width:100%;margin-top:12px;" onclick="goHome()">目次へ戻る</button>
+    </div>
+  </div>
+
+  <p class="foot" id="mainfoot" style="display:none;">&copy; 2026 サキ｜1人サロンの『うら側整え屋』</p>
+</div>
+
+<script>
+var KEY="saki_work_full_v1";
+var state={checks:{},fields:{},tasks:[]};
+
+/* チェック項目の定義 */
+var C={
+  s1:["来月の予約人数を即答できない","今月の必要売上を言えない","客単価を把握していない","リピート率を計算したことがない","SNSを止めるのが怖い","空き枠を見ると焦る","値上げに自信がない","新規が減ると不安","売上を見るのを後回しにしている","休むと売上ゼロになる"],
+  s4act:["既存客フォローは終わってる？","次回予約を確認した？","来月の予約表を見た？","売上を入力した？","LINE返信を溜めてない？","店販提案の準備をした？","リピート分析をした？"],
+  s5:["なんとなくSNSを見る時間","投稿デザインを作り込みすぎる","必要以上のクーポン作成","新メニューを増やす","安売り","長すぎる無料DM対応","予約導線の放置","断れない値引き","優先順位なしの勉強","「とりあえず」で動くこと"],
+  s7:["売上を言える","必要売上を把握している","月の予約数を言える","客単価を把握している","空き枠の許容数を決めている"]
+};
+var DAYS=[
+ "今月の売上を出す","必要売上を計算する","予約数を書き出す","客単価を出す","空き枠を確認する","既存客リストを見る","次回予約率を確認",
+ "今やっている仕事を全部書く","〇△×に分類する","×を3つ削る","SNS作業時間を測る","予約導線を見直す","DM対応時間を確認","「やらなくていい事」を決める",
+ "「なんとなくやってる事」を書く","「売上につながる仕事」を整理","優先順位ルールを決める","「やる基準」を決める","「やらない基準」を決める","理想のお客様像を固定","どんなサロンにしたいか言語化",
+ "毎日やる事を固定する","毎週やる事を固定する","数字確認日を決める","予約導線を整理する","「不安な時の行動」を決める","時間の使い方を見直す","理想の働き方を再確認","サロン経営チェック","30日後の自分を振り返る"
+];
+var WEEKS=[{t:"1週目",s:"売上・顧客・予約を、すべて書き出す"},{t:"2週目",s:"“ムダ”を減らす。×を削る"},{t:"3週目",s:"判断基準を固定する"},{t:"4週目",s:"“続く仕組み”に落とし込む"}];
+
+var MENU=[
+ {id:"1",t:"不安の正体チェック",s:"10項目で、今の状態を知る"},
+ {id:"2",t:"数字で、見える化する",s:"入れるだけで自動計算"},
+ {id:"3",t:"優先順位の間違いを見つける",s:"やることを〇△×で分類"},
+ {id:"4",t:"判断基準を作る",s:"迷わないための自分ルール"},
+ {id:"5",t:"やらないことを決める",s:"削る力を、つける"},
+ {id:"6",t:"3ヶ月後から逆算する",s:"理想から、今日へ"},
+ {id:"7",t:"経営チェックリスト",s:"5項目で安定度を確認"},
+ {id:"8",t:"30日 実践プラン",s:"1日1つ、整えていく"},
+ {id:"9",t:"わたしの設計図",s:"すべてが1枚に集まる"}
+];
+
+function load(){ try{ var d=JSON.parse(localStorage.getItem(KEY)||"{}"); if(d.checks)state.checks=d.checks; if(d.fields)state.fields=d.fields; if(d.tasks)state.tasks=d.tasks; }catch(e){} }
+function persist(){ try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){} }
+function num(id){ var v=parseFloat((state.fields[id]||"")); return isNaN(v)?0:v; }
+function yen(n){ return Math.round(n).toLocaleString("ja-JP"); }
+function getCheck(g,i){ return !!(state.checks[g]&&state.checks[g][i]); }
+function setCheck(g,i,val){ if(!state.checks[g])state.checks[g]={}; state.checks[g][i]=val; persist(); }
+
+/* チェックリスト描画 */
+function renderChecks(containerId,group,items){
+  var c=document.getElementById(containerId); c.innerHTML="";
+  items.forEach(function(txt,i){
+    var lab=document.createElement("label");
+    var ck=document.createElement("input"); ck.type="checkbox"; ck.checked=getCheck(group,i);
+    ck.addEventListener("change",function(){ setCheck(group,i,ck.checked); updateMeters(); });
+    var sp=document.createElement("span"); sp.textContent=txt;
+    lab.appendChild(ck); lab.appendChild(sp); c.appendChild(lab);
+  });
+}
+
+/* フィールド束縛 */
+function bindFields(){
+  document.querySelectorAll(".wf").forEach(function(el){
+    if(state.fields[el.id]!=null) el.value=state.fields[el.id];
+    el.addEventListener("input",function(){ state.fields[el.id]=el.value; persist(); if(el.id.indexOf("s2_")===0) calcS2(); });
+  });
+}
+
+/* WORK2 自動計算 */
+function calcS2(){
+  var need=num("s2_need"),cur=num("s2_cur"),days=num("s2_days"),unit=num("s2_unit"),slots=num("s2_slots");
+  var gap=need-cur;
+  var g=document.getElementById("s2_gap"),pd=document.getElementById("s2_perday"),pp=document.getElementById("s2_people"),sj=document.getElementById("s2_slotjudge");
+  if(gap>0){ g.textContent="あと "+yen(gap)+"円"; g.className="v big"; }
+  else if(need>0){ g.textContent="達成しています"; g.className="v ok"; }
+  else { g.textContent="—"; g.className="v"; }
+  pd.textContent=(gap>0&&days>0)?yen(gap/days)+"円/日":(gap<=0&&need>0?"—":"—");
+  var people=(gap>0&&unit>0)?Math.ceil(gap/unit):0;
+  pp.textContent=(gap>0&&unit>0)?people+"人":(gap<=0&&need>0?"0人でOK":"—");
+  if(gap>0&&unit>0&&slots>0){ sj.textContent=(slots>=people)?"足りています":"あと"+(people-slots)+"枠不足"; sj.className=(slots>=people)?"v ok":"v big"; }
+  else { sj.textContent="—"; sj.className="v"; }
+  var hint=document.getElementById("s2_hint");
+  if(gap>0&&unit>0){ hint.textContent="「なんとなく怖い」が、「あと"+people+"人」に変わりました。全部埋めようと焦らなくて大丈夫です。"; }
+  else if(need>0&&gap<=0){ hint.textContent="必要ラインは達成。空き枠は、休む・仕込む時間に使えます。"; }
+  else { hint.textContent="数字を入れると、ここに自動で出ます。"; }
+}
+
+/* WORK3 タスク */
+function renderTasks(){
+  var wrap=document.getElementById("taskList"); wrap.innerHTML="";
+  if(state.tasks.length===0){ state.tasks=[{t:"",g:""},{t:"",g:""},{t:"",g:""}]; }
+  state.tasks.forEach(function(tk,idx){
+    var row=document.createElement("div"); row.className="task";
+    var inp=document.createElement("input"); inp.className="wt"; inp.placeholder="やっていること"; inp.value=tk.t||"";
+    inp.addEventListener("input",function(){ state.tasks[idx].t=inp.value; persist(); });
+    var tags=document.createElement("div"); tags.className="tags";
+    ["〇","△","×"].forEach(function(sym){
+      var b=document.createElement("button"); b.textContent=sym; if(tk.g===sym)b.className="on";
+      b.addEventListener("click",function(){ state.tasks[idx].g=(state.tasks[idx].g===sym?"":sym); persist(); renderTasks(); updateMeters(); });
+      tags.appendChild(b);
+    });
+    row.appendChild(inp); row.appendChild(tags); wrap.appendChild(row);
+  });
+}
+function addTask(){ state.tasks.push({t:"",g:""}); persist(); renderTasks(); }
+
+/* 30日 */
+function renderDays(){
+  var wrap=document.getElementById("dayplan"); wrap.innerHTML="";
+  WEEKS.forEach(function(wk,wi){
+    var h=document.createElement("div"); h.className="wk"; h.innerHTML=wk.t+"<small>"+wk.s+"</small>"; wrap.appendChild(h);
+    var grid=document.createElement("div"); grid.className="days";
+    for(var d=0; d<7 && (wi*7+d)<30; d++){
+      var di=wi*7+d;
+      var lab=document.createElement("label");
+      var ck=document.createElement("input"); ck.type="checkbox"; ck.checked=getCheck("s8",di);
+      (function(di){ ck.addEventListener("change",function(){ setCheck("s8",di,ck.checked); updateDayBar(); }); })(di);
+      var t=document.createElement("span"); t.textContent="Day"+(di+1);
+      lab.appendChild(ck); lab.appendChild(t); grid.appendChild(lab);
+    }
+    wrap.appendChild(grid);
+    var list=document.createElement("p"); list.className="daylist"; var txt="";
+    for(var d2=0; d2<7 && (wi*7+d2)<30; d2++){ var di2=wi*7+d2; txt+="Day"+(di2+1)+"　"+DAYS[di2]+"<br>"; }
+    list.innerHTML=txt; wrap.appendChild(list);
+  });
+  updateDayBar();
+}
+function countDays(){ var n=0; for(var i=0;i<30;i++) if(getCheck("s8",i))n++; return n; }
+function updateDayBar(){
+  var n=countDays();
+  var b=document.getElementById("d30_bar"), t=document.getElementById("d30_txt");
+  if(b){ b.style.width=Math.round(n/30*100)+"%"; t.textContent=n+" / 30 日"; }
+}
+
+/* メーター */
+function countChecks(g,len){ var n=0; for(var i=0;i<len;i++) if(getCheck(g,i))n++; return n; }
+function updateMeters(){
+  var n1=countChecks("s1",10);
+  var m1v=document.getElementById("m1_v"); if(m1v){ m1v.textContent=n1+" / 10"; document.getElementById("m1_t").textContent=n1>=5?"感覚経営になっている可能性が高いです。1つずつ整えましょう。":(n1>0?"見えていないものが、少しずつ見えてきました。":"チェックしてみましょう。"); }
+  var o=0,tr=0,x=0; state.tasks.forEach(function(t){ if(t.g==="〇")o++; else if(t.g==="△")tr++; else if(t.g==="×")x++; });
+  var m3=document.getElementById("m3_v"); if(m3){ m3.textContent="〇"+o+" △"+tr+" ×"+x; document.getElementById("m3_t").textContent=x>o?"×が多めです。安心のためだけの作業を、削れないか見てみましょう。":"売上直結の〇を、増やしていきましょう。"; }
+  var n7=countChecks("s7",5); var m7=document.getElementById("m7_v"); if(m7){ m7.textContent=n7+" / 5"; document.getElementById("m7_t").textContent=(5-n7)>=3?"経営不安が出やすい状態です。まずWORK2の数字から。":"整ってきています。この調子で。"; }
+}
+
+/* 進捗 */
+function sectionDone(id){
+  switch(id){
+    case "1": return countChecks("s1",10)>0;
+    case "2": return (state.fields.s2_need&&state.fields.s2_cur);
+    case "3": return state.tasks.some(function(t){return t.t&&t.t.trim();});
+    case "4": return (state.fields.s4_basis&&state.fields.s4_basis.trim())||countChecks("s4act",7)>0||countChecks("s4rule",3)>0;
+    case "5": return (state.fields.s5_stop1&&state.fields.s5_stop1.trim())||countChecks("s5",10)>0;
+    case "6": return state.fields.s6_sales&&state.fields.s6_sales.trim();
+    case "7": return countChecks("s7",5)>0;
+    case "8": return countDays()>0;
+    case "9": return false;
+  }
+  return false;
+}
+function renderMenu(){
+  var m=document.getElementById("menu"); m.innerHTML="";
+  MENU.forEach(function(it){
+    var b=document.createElement("button"); b.onclick=function(){ go(it.id); };
+    var done=it.id!=="9"&&sectionDone(it.id);
+    var stTxt=it.id==="8"?(countDays()+"/30"):(done?"入力済み":"これから");
+    b.innerHTML='<span class="no">'+it.id+'</span><span class="tx"><b>'+it.t+'</b><small>'+it.s+'</small></span><span class="st'+(done?' done':'')+'"><span class="dot"></span>'+stTxt+'</span>';
+    m.appendChild(b);
+  });
+  var total=8,doneN=0; for(var i=1;i<=8;i++) if(sectionDone(String(i)))doneN++;
+  var pct=Math.round(doneN/total*100);
+  document.getElementById("ov_bar").style.width=pct+"%";
+  document.getElementById("ov_txt").textContent="進捗 "+pct+"%（"+doneN+"/8 ワーク）";
+}
+
+/* 設計図 */
+function renderMap(){
+  var map=document.getElementById("map");
+  var need=num("s2_need"),cur=num("s2_cur"),unit=num("s2_unit"),gap=need-cur;
+  var people=(gap>0&&unit>0)?Math.ceil(gap/unit):0;
+  var html="";
+  html+='<div class="map-metric"><span class="k">現在の売上</span><span class="v">'+(cur?yen(cur):"—")+'<small>円</small></span></div>';
+  html+='<div class="map-metric"><span class="k">必要売上</span><span class="v">'+(need?yen(need):"—")+'<small>円</small></span></div>';
+  html+='<div class="map-metric dark"><span class="k">必要ラインまで</span><span class="v">'+(need? (gap>0?"あと"+yen(gap)+"円":"達成") :"—")+'</span></div>';
+  html+='<div class="map-metric"><span class="k">あと必要な人数</span><span class="v">'+(need&&gap>0?people+'<small>人</small>':(need?'0<small>人</small>':"—"))+'</span></div>';
+  var goal=num("s6_sales");
+  html+='<div class="map-metric"><span class="k">3ヶ月後の目標売上</span><span class="v">'+(goal?yen(goal):"—")+'<small>円</small></span></div>';
+  html+='<div class="map-metric"><span class="k">30日プランの進み</span><span class="v">'+countDays()+'<small>/30日</small></span></div>';
+
+  html+=mapBlock("わたしの判断基準",state.fields.s4_basis);
+  html+=mapBlock("毎日やること",state.fields.s6_day);
+  var stops=[state.fields.s5_stop1,state.fields.s5_stop2,state.fields.s5_stop3].filter(function(s){return s&&s.trim();});
+  html+=mapBlock("今月、やめること",stops.length?stops.map(function(s,i){return "・"+s;}).join("\n"):"");
+  map.innerHTML=html;
+}
+function mapBlock(title,val){
+  var v=(val&&val.trim())?val:'<span class="map-empty">（まだ入力されていません）</span>';
+  return '<div class="map-block"><div class="bt">'+title+'</div><div class="map-txt">'+v+'</div></div>';
+}
+
+/* 画面遷移 */
+function showView(id){
+  document.querySelectorAll(".view").forEach(function(v){ v.classList.remove("on"); });
+  document.getElementById("v_"+id).classList.add("on");
+  window.scrollTo(0,0);
+}
+function go(id){ showView(id); if(id==="9")renderMap(); if(id==="8")updateDayBar(); updateMeters(); }
+function goHome(){ showView("home"); renderMenu(); }
+
+function resetAll(){
+  if(!confirm("すべての入力を消して、最初に戻します。よろしいですか？")) return;
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  state={checks:{},fields:{},tasks:[]};
+  document.querySelectorAll(".wf").forEach(function(el){ el.value=""; });
+  renderChecks("c_s1","s1",C.s1); renderChecks("c_s4act","s4act",C.s4act); renderChecks("c_s5","s5",C.s5); renderChecks("c_s7","s7",C.s7);
+  renderTasks(); renderDays(); calcS2(); updateMeters(); goHome();
+}
+
+/* 初期化 */
+load();
+renderChecks("c_s1","s1",C.s1);
+renderChecks("c_s4act","s4act",C.s4act);
+renderChecks("c_s5","s5",C.s5);
+renderChecks("c_s7","s7",C.s7);
+// s4rule checkboxes are inline; bind them
+document.querySelectorAll('input[data-g="s4rule"]').forEach(function(ck){
+  var i=parseInt(ck.getAttribute("data-i"),10);
+  ck.checked=getCheck("s4rule",i);
+  ck.addEventListener("change",function(){ setCheck("s4rule",i,ck.checked); });
+});
+bindFields();
+renderTasks();
+renderDays();
+calcS2();
+updateMeters();
+renderMenu();
+</script>
+</body>
+</html>
